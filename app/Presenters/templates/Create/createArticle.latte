@@ -1,0 +1,14 @@
+{block content}
+<h1 class="mt-5 pb-2 border-bottom">Nový článek</h1>
+<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+<div class="row g-4 py-5 px-5 row-cols-1 w-100">
+    <div class="d-flex justify-content-between">
+        <a n:href="Article:back $backpage" class="btn btn-outline-primary shadow-lg">
+            Zpět
+        </a>
+    </div>
+    <div class="feature col rounded-3 shadow-lg border border-1 pt-4 ps-4 mywidth">
+        {control articleForm}
+    </div>
+</div>
+{/block}

@@ -1,0 +1,25 @@
+{block content}
+<h1 class="mt-5 pb-2 border-bottom">Publikované články</h1>
+<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+<div class="row g-4 py-5 px-5 row-cols-1 w-100">
+    <div class="d-flex justify-content-between">
+        <a n:href="Create:createArticle $control->storeRequest()" n:if="$user->isLoggedIn()" class="icon-link">
+            Vytvořit nový článek
+        </a>
+        {snippet b}
+            <a n:href="changeStatus! $b" class="icon-link ajax">
+                Seřadit od {$sort}
+            </a>
+        {/snippet}
+    </div>
+    {snippet articleList}
+        {foreach $articles as $article }
+            <div class="ajax feature col rounded-3 shadow-lg border border-1 pt-4 ps-4 mb-4">
+                <h2 class="fs-2 text-body-emphasis">{$article->title}</h2>
+                <p>Vydáno: {$article->created_at|date:'j.n. Y, H:i'} | Autor: {$article->ref('user')->name}</p>
+                <p id="new">{$article->content|truncate:200}</p>
+            </div>
+        {/foreach}
+    {/snippet}
+</div>
+{/block}
