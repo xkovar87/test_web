@@ -1,0 +1,5 @@
+services:
+	- App\Router\RouterFactory::createRouter
+	- App\Models\ArticleModel(%__EMAIL__%)
+	- App\Models\LoginModel
+	- App\Models\AccountModel
